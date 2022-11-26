@@ -4,9 +4,9 @@ from Utility.Enums.MainFlow import MainFlow
 from .InterfaceManager import InterfaceManager
 from .FlowManagers.FlowManager import FlowManager
 from Utility.Localization.LocalizationManager import LocalizationManager
+from System.Logging import Logging
 
 class BotManager:
-
     botToken = ""
 
     bot: telebot = any
@@ -14,6 +14,7 @@ class BotManager:
     flowManager = FlowManager()
 
     def setup(self):
+
         handlerHooks = []
 
         for x in self.flowManager.handlers:
@@ -22,10 +23,11 @@ class BotManager:
 
         @self.bot.message_handler(commands=["start"])
         def botStart(message):
+            
+            self.logger.debug("**__Received a start command from "+ str(message.from_user.id) + "__**")
             self.flowManager.activeFlow = MainFlow.onboarding
         
             msgcom = MainFlow.onboarding.value
-
 
             for x in self.flowManager.handlers:
                 i = x.fetchHook()
@@ -78,4 +80,7 @@ class BotManager:
     def __init__(self, botToken):
         self.botToken = botToken
         self.bot = telebot.TeleBot(botToken, parse_mode=None) 
+        self.logger = Logging.instance().logger
+        self.logger.debug("Bot initialised")
         self.setup()
+        self.logger.debug("Bot setup complete")
