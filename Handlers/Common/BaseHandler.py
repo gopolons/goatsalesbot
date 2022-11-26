@@ -1,4 +1,4 @@
-from Utility.MainFlow import MainFlow
+from Utility.Enums.MainFlow import MainFlow
 
 class BaseHandler:
     flow: MainFlow

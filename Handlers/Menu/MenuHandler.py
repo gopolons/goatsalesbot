@@ -1,11 +1,12 @@
-from Utility.MainFlow import MainFlow
+from Utility.Enums.MainFlow import MainFlow
 from ..Common.BaseHandler import BaseHandler
 from Managers.InterfaceManager import InterfaceManager
+from Utility.Localization.LocalizationManager import LocalizationManager
 
 class MenuHandler(BaseHandler):
     def enableFlow(self, bot, message, flowManager):
         markup = InterfaceManager.generateMainMenuLayout(flowManager)
-        bot.reply_to(message, "Ты в меню, че хочешь", reply_markup=markup)
+        bot.reply_to(message, LocalizationManager.instance().mainMenu.menuMsg, reply_markup=markup)
 
     def handleCommand(self, bot, message, flowManager):
         if message == "search":

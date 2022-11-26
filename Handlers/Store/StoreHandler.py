@@ -1,6 +1,7 @@
 from telebot import types
-from Utility.MainFlow import MainFlow
-from Utility.StoreFlow import StoreFlow
+from Utility.Enums.MainFlow import MainFlow
+from Utility.Enums.StoreFlow import StoreFlow
+from Utility.Localization.LocalizationManager import LocalizationManager
 from Managers.FlowManagers.StoreFlowManager import StoreFlowManager
 from Managers.InterfaceManager import InterfaceManager
 from ..Common.BaseHandler import BaseHandler
@@ -13,7 +14,7 @@ class StoreHandler(BaseHandler):
         self.storeFlowManager.activeFlow = StoreFlow.menu
         
         markup = InterfaceManager.generateStoreLayout(self.storeFlowManager)
-        bot.reply_to(message, "Ты в магазе, че хочешь", reply_markup=markup)
+        bot.reply_to(message, LocalizationManager.instance().store.menuMsg, reply_markup=markup)
 
     def __init__(self):
         self.flow = MainFlow.store

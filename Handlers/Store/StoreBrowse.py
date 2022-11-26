@@ -1,4 +1,4 @@
-from Utility.StoreFlow import StoreFlow
+from Utility.Enums.StoreFlow import StoreFlow
 from ..Common.StoreBaseHandler import StoreBaseHandler
 
 class StoreBrowse(StoreBaseHandler):

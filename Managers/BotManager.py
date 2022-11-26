@@ -1,9 +1,9 @@
 import telebot
 from telebot import types
-from Utility.MainFlow import MainFlow
+from Utility.Enums.MainFlow import MainFlow
 from .InterfaceManager import InterfaceManager
 from .FlowManagers.FlowManager import FlowManager
-from .LocalizationManager import LocalizationManager
+from Utility.Localization.LocalizationManager import LocalizationManager
 
 class BotManager:
 
@@ -22,12 +22,16 @@ class BotManager:
 
         @self.bot.message_handler(commands=["start"])
         def botStart(message):
-            self.flowManager.activeFlow = MainFlow.localization
+            self.flowManager.activeFlow = MainFlow.onboarding
         
-            msgcom = MainFlow.localization.value
+            msgcom = MainFlow.onboarding.value
+
 
             for x in self.flowManager.handlers:
                 i = x.fetchHook()
+
+                print(msgcom)
+                print(i)
 
                 if i == msgcom:
                     self.flowManager.activeFlow = x.flow

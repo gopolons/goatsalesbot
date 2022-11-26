@@ -1,6 +1,6 @@
 from telebot import types
-from Utility.MainFlow import MainFlow
-from Utility.StoreFlow import StoreFlow
+from Utility.Enums.MainFlow import MainFlow
+from Utility.Enums.StoreFlow import StoreFlow
 
 class InterfaceManager:
     def generateLanguageSelectionLayout() -> any:
