@@ -1,7 +1,8 @@
 from Utility.Enums.StoreFlow import StoreFlow
 
 class StoreBaseHandler:
-    storeFlow: StoreFlow
-
     def fetchHook(self) -> str:
         return self.storeFlow.hook()
+
+    def __init__(self):
+        self.storeFlow = StoreFlow

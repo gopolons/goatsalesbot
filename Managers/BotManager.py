@@ -30,8 +30,8 @@ class BotManager:
             for x in self.flowManager.handlers:
                 i = x.fetchHook()
 
-                print(msgcom)
-                print(i)
+                # print(msgcom)
+                # print(i)
 
                 if i == msgcom:
                     self.flowManager.activeFlow = x.flow
@@ -40,7 +40,7 @@ class BotManager:
 
             return
 
-        @self.bot.message_handler(regexp="[А-яA-z]")
+        @self.bot.message_handler()
         def switchFlow(message):
             
             msgcom = message.text

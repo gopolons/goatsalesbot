@@ -15,7 +15,7 @@ class OnboardingHandler(BaseHandler):
 
             LocalizationManager.instance().updateLocalization(message.text)
 
-            print(LocalizationManager.instance().lang)
+            # print(LocalizationManager.instance().lang)
 
             markup = InterfaceManager.generateMainMenuLayout(flowManager)
 

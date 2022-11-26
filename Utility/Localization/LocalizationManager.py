@@ -1,14 +1,13 @@
 from Utility.Singleton import Singleton
 
-@Singleton
 class MainMenuLocalization:
     # commands
-    menu = str
-    store = str
-    customerSupport = str
-    myOrders = str
-    help = str
-    onboarding = str
+    menu = "⬅️"
+    store = "🛒"
+    customerSupport = "📞"
+    myOrders = "🗒️"
+    help = "❓"
+    onboarding = "🌎"
 
     # messages
     menuMsg = str
@@ -16,37 +15,33 @@ class MainMenuLocalization:
     def updateLocalization(self, language):
         if language == "Русский":
 
-            self.menu = "Главное меню"
-            self.store = "Магазин"
-            self.customerSupport = "Поддержка"
-            self.myOrders = "Мои заказы"
-            self.help = "Помощь"
-            self.onboarding = "Выбор языка"
-
-            self.menuMsg = "Главное меню. Выберите опцию"
+            self.menuMsg = """Главное меню. Выберите опцию:
+🛒 - Перейти в магазин
+📞 - Служба поддержки
+🗒️ - Мои заказы
+❓ - Помощь
+🌎 - Выбор языка
+            """
         
         elif language == "English":
 
-            self.menu = "Main menu"
-            self.store = "Store"
-            self.customerSupport = "Customer Support"
-            self.myOrders = "My orders"
-            self.help = "Help"
-            self.onboarding = "Language selection"
-
-            self.menuMsg = "Main menu. Pick an option"
+            self.menuMsg = """Main menu. Pick an option:
+🛒 - Shop
+📞 - Customer support
+🗒️ - My orders
+❓ - Help
+🌎 - Select language
+            """
 
     def __init__(self):
         self.updateLocalization("English")
 
-
-@Singleton
 class StoreLocalization:
     # commands
-    search = str
-    browse = str
-    checkout = str
-    menu = str
+    search = "🔍"
+    browse = "👀"
+    checkout = "💸"
+    menu = "⬅️"
 
     # messages
     menuMsg = str
@@ -54,27 +49,25 @@ class StoreLocalization:
     def updateLocalization(self, language):
         if language == "Русский":
 
-            self.search = "Поиск"
-            self.browse = "Новинки"
-            self.checkout = "Оплата"
-            self.menu = "Меню"
-
-            self.menuMsg = "Магазин. Выберите опцию"
-
+            self.menuMsg = """Магазин. Выберите опцию:
+🔍 - Поиск
+👀 - Смотреть новинки
+💸 - Оплата
+⬅️ - Главное меню
+            """
+        
         elif language == "English":
 
-            self.search = "Search"
-            self.browse = "Browse"
-            self.checkout = "Checkout"
-            self.menu = "Menu"
-
-            self.menuMsg = "Store. Pick an option"
+            self.menuMsg = """Store. Pick an option:
+🔍 - Search
+👀 - Browse collection
+💸 - Checkout
+⬅️ - Main menu
+            """
 
     def __init__(self):
         self.updateLocalization("English")
         
-
-@Singleton
 class HelpLocalization:
     lang = "Русский"
     
@@ -84,7 +77,6 @@ class HelpLocalization:
     def __init__(self):
         self.updateLocalization("English")
 
-@Singleton
 class OnboardingLocalization:
     botStartMsg = str
     
@@ -101,7 +93,6 @@ class OnboardingLocalization:
     def __init__(self):
         self.updateLocalization("English")
 
-@Singleton
 class CustomerSupportLocalization:
     lang = "Русский"
     
@@ -111,7 +102,6 @@ class CustomerSupportLocalization:
     def __init__(self):
         self.updateLocalization("English")
 
-@Singleton
 class MyOrdersLocalization:
     lang = "Русский"
 
@@ -126,12 +116,12 @@ class LocalizationManager:
     lang = "Русский"
 
     # localization objects
-    mainMenu = MainMenuLocalization.instance()
-    store = StoreLocalization.instance()
-    help = HelpLocalization.instance()
-    onboarding = OnboardingLocalization.instance()
-    customerSupport = CustomerSupportLocalization.instance()
-    myOrders = MyOrdersLocalization.instance()
+    mainMenu = MainMenuLocalization()
+    store = StoreLocalization()
+    help = HelpLocalization()
+    onboarding = OnboardingLocalization()
+    customerSupport = CustomerSupportLocalization()
+    myOrders = MyOrdersLocalization()
 
     defaultErr = str
 
