@@ -3,7 +3,7 @@ from Utility.Enums.MainFlow import MainFlow
 from Utility.Enums.StoreFlow import StoreFlow
 
 class InterfaceManager:
-    def generateLanguageSelectionLayout() -> types.ReplyKeyboardMarkup:
+    def generateLanguageSelectionLayout() -> any:
         markup = types.ReplyKeyboardMarkup(row_width=2)
         english = types.KeyboardButton("English")
         russian = types.KeyboardButton("Русский")
@@ -11,7 +11,7 @@ class InterfaceManager:
 
         return markup
 
-    def generateMainMenuLayout(flowManager) -> types.ReplyKeyboardMarkup:
+    def generateMainMenuLayout(flowManager) -> any:
         markup = types.ReplyKeyboardMarkup(row_width=2)  
         for x in flowManager.handlers:
             i = x.fetchHook()
@@ -21,7 +21,7 @@ class InterfaceManager:
 
         return markup
 
-    def generateStoreLayout(storeFlowManager) -> types.ReplyKeyboardMarkup:
+    def generateStoreLayout(storeFlowManager) -> any:
         markup = types.ReplyKeyboardMarkup(row_width=2)
         for x in storeFlowManager.handlers:
             i = x.fetchHook()
@@ -34,3 +34,6 @@ class InterfaceManager:
 
         return markup
 
+    def resetMarkup() -> any:
+        markup = types.ReplyKeyboardRemove()
+        return markup

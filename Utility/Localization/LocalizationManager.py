@@ -45,6 +45,10 @@ class StoreLocalization:
 
     # messages
     menuMsg = str
+    searchMsg = str
+
+    # errors
+    searchErr = str
 
     def updateLocalization(self, language):
         if language == "Русский":
@@ -55,6 +59,8 @@ class StoreLocalization:
 💸 - Оплата
 ⬅️ - Главное меню
             """
+            self.searchMsg = "Какую вещь вы ищете? Напишите название бренда, вещи, или категории (обувь, верхняя одежда итд)"
+            self.searchErr = "К сожалению ничего нет по вашему запросу. Пожалуйста попробуйте другое, или напишите /back чтобы вернуться в меню магазина"
         
         elif language == "English":
 
@@ -64,6 +70,9 @@ class StoreLocalization:
 💸 - Checkout
 ⬅️ - Main menu
             """
+            self.searchMsg = "What kind of item are you looking for? Write the name of the brand, item, or it's category (shoes, tops etc)"
+            self.searchErr = "Unfortunately, nothing was found based on your request. Please try another search term, or send /back to return to shop menu"
+
 
     def __init__(self):
         self.updateLocalization("English")

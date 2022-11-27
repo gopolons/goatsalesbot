@@ -42,6 +42,22 @@ class BotManager:
 
             return
 
+        @self.bot.message_handler(commands=["back"])
+        def back(message):
+            try:
+                msgcom = self.flowManager.activeFlow.hook()
+            except: 
+                self.resetToMenu(message)
+                return
+
+            for x in self.flowManager.handlers:
+
+                i = x.fetchHook()
+
+                if i == msgcom:
+                    x.enableFlow(self.bot, message, self.flowManager)
+                    return
+
         @self.bot.message_handler()
         def switchFlow(message):
             

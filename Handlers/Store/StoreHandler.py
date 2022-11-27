@@ -25,6 +25,14 @@ class StoreHandler(BaseHandler):
                 self.storeFlowManager.activeFlow = x
                 self.storeFlowManager.activeFlow.enableFlow(bot, message, self.storeFlowManager)
                 return
+
+            activeFlow = self.storeFlowManager.activeFlow.hook()
+
+            for x in self.storeFlowManager.handlers:
+                if activeFlow == x.fetchHook():
+                    x.handleCommand(bot, message, self.storeFlowManager)
+                    return
+        
     
     def checkout(self, bot, message):
         return
