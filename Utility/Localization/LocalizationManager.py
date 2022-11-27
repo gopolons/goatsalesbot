@@ -200,8 +200,8 @@ class GeneralLocalization:
             self.orderStatusFailed = "Ошибка"
 
             self.yourOrderFromServ = "Ваш заказ от"
-            self.priceServ = "Цена:"
-            self.statusServ = "Статус:"
+            self.priceServ = "Цена"
+            self.statusServ = "Статус"
 
         elif language == "English":
             
@@ -210,8 +210,8 @@ class GeneralLocalization:
             self.orderStatusFailed = "Error"
 
             self.yourOrderFromServ = "Your order from"
-            self.priceServ = "Price:"
-            self.statusServ = "Status:"
+            self.priceServ = "Price"
+            self.statusServ = "Status"
 
 class ClothingTypes:
 
