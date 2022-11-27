@@ -16,6 +16,7 @@ class StoreSearch(StoreBaseHandler):
         searchItem = message.text 
         reply = LocalizationManager.instance().store.searchErr
         bot.reply_to(message, reply)
+        return
 
     
     def __init__(self):

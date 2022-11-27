@@ -2,7 +2,6 @@ from ast import List
 from Utility.Flows.MainFlow import MainFlow
 from ..Common.BaseHandler import BaseHandler
 from Utility.Localization.LocalizationManager import LocalizationManager
-from Utility.Model.Classes.Order import Order
 from Managers.ObjectMessageConvertionManager import ObjectMessageConvertionManager
 
 class MyOrdersHandler(BaseHandler):

@@ -61,7 +61,7 @@ class StoreLocalization:
 💸 - Оплата
 ⬅️ - Главное меню
             """
-            self.searchMsg = "Какую вещь вы ищете? Напишите название бренда, вещи, или категории (обувь, верхняя одежда итд)"
+            self.searchMsg = "Какую вещь вы ищете? Напишите название бренда, вещи, или категории (обувь, верхняя одежда итд), или напишите /back чтобы отменить"
             self.browseMsg = "Здесь вы можете ознакомиться с коллекциями одежды доступной у нас на платформе"
             self.checkoutMsg = "Здесь вы можете оформить заказ и перейти к оплате"
 
@@ -76,7 +76,7 @@ class StoreLocalization:
 💸 - Checkout
 ⬅️ - Main menu
             """
-            self.searchMsg = "What kind of item are you looking for? Write the name of the brand, item, or it's category (shoes, tops etc)"
+            self.searchMsg = "What kind of item are you looking for? Write the name of the brand, item, or it's category (shoes, tops etc), or send /back to cancel"
             self.browseMsg = "Here you can browse our available collections"
             self.checkoutMsg = "Here you can make an order and complete your payment"
            
@@ -145,8 +145,31 @@ class OnboardingLocalization:
         self.updateLocalization("English")
 
 class CustomerSupportLocalization:
+
+    # commands
+    getInTouch = "✉️"
+    menu = "⬅️"
+
+    # messages
+    menuMsg = str
+    instructionMsg = str
+    submissionMsg = str
+
     def updateLocalization(self, language):
-        return
+        if language == "Русский":
+            self.menuMsg = """Поддержка. Выберите опцию:
+✉️ - Связаться
+⬅️ - Главное меню
+            """
+            self.instructionMsg = "Пожалуйста опишите проблему с которой сталкиваетесь. Агент поддержки свяжется с вами лично чтобы помочь. Чтобы отменить, отправьте /back"
+            self.submissionMsg = "Спасибо за ваш отзыв! Мы свяжемся с вами как можно скорее. Вы можете оставить еще одно сообщение или нажать /back чтобы вернуться в меню"
+        elif language == "English":
+            self.menuMsg = """Customer support. Pick an option:
+✉️ - Get in touch
+⬅️ - Main menu
+            """
+            self.instructionMsg = "Please describe the problem you're facing. Customer support agent will get in touch to assist you personally. To cancel, send /back"
+            self.submissionMsg = "Thank you for your response! We'll get in touch with you as soon as possible. You can leave another message or send /back to dismiss to menu"
 
     def __init__(self):
         self.updateLocalization("English")
