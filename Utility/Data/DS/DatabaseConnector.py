@@ -1,6 +1,4 @@
-from Common.DBInterface import DBInterface
-
-class DatabaseConnector(DBInterface):
+class DatabaseConnector:
     def fetchUserOrders(userID):
         return
 

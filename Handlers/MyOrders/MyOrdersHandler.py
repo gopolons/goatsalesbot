@@ -3,6 +3,7 @@ from Utility.Flows.MainFlow import MainFlow
 from ..Common.BaseHandler import BaseHandler
 from Utility.Localization.LocalizationManager import LocalizationManager
 from Managers.ObjectMessageConvertionManager import ObjectMessageConvertionManager
+from Utility.Data.AppDataRepository import AppDataRepository
 
 class MyOrdersHandler(BaseHandler):
     def enableFlow(self, bot, message, flowManager):
@@ -11,11 +12,11 @@ class MyOrdersHandler(BaseHandler):
             bot.reply_to(message, LocalizationManager.instance().myOrders.noOrdersErr)
         else:
             bot.reply_to(message, LocalizationManager.instance().myOrders.menuMsg)
-            ObjectMessageConvertionManager().orderToStr(bot, orders)
+            ObjectMessageConvertionManager().orderToStr(bot, message, orders)
         
     def fetchOrders(self, userID):
-        # here the fetch order logic will take place
-        return []
+        orders = self.dataRepo.fetchUserOrders(userID)
+        return orders
 
     def handleCommand(self, bot, message, flowManager):
         if message == "search":
@@ -23,3 +24,4 @@ class MyOrdersHandler(BaseHandler):
 
     def __init__(self):
         self.flow = MainFlow.myOrders
+        self.dataRepo = AppDataRepository()

@@ -32,9 +32,6 @@ class BotManager:
             for x in self.flowManager.handlers:
                 i = x.fetchHook()
 
-                # print(msgcom)
-                # print(i)
-
                 if i == msgcom:
                     self.flowManager.activeFlow = x.flow
                     x.enableFlow(self.bot, message, self.flowManager)

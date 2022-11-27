@@ -33,9 +33,6 @@ class MainMenuLocalization:
 🌎 - Select language
             """
 
-    def __init__(self):
-        self.updateLocalization("English")
-
 class StoreLocalization:
     # commands
     browse = "👀"
@@ -81,10 +78,6 @@ class StoreLocalization:
             self.checkoutMsg = "Here you can make an order and complete your payment"
            
             self.searchErr = "Unfortunately, nothing was found based on your request. Please try another search term, or send /back to return to shop menu"
-
-
-    def __init__(self):
-        self.updateLocalization("English")
         
 class HelpLocalization:
      # commands
@@ -124,9 +117,6 @@ class HelpLocalization:
             self.TNCPPMsg = "PP // TNC text"
             self.usMsg = "About us"
 
-    def __init__(self):
-        self.updateLocalization("English")
-
 class OnboardingLocalization:
 
     # messages
@@ -140,9 +130,6 @@ class OnboardingLocalization:
         elif language == "English":
             self.botStartMsg = "Welcome. Select the language"
             self.languageSelectedMsg = "Language selected"
-
-    def __init__(self):
-        self.updateLocalization("English")
 
 class CustomerSupportLocalization:
 
@@ -171,9 +158,6 @@ class CustomerSupportLocalization:
             self.instructionMsg = "Please describe the problem you're facing. Customer support agent will get in touch to assist you personally. To cancel, send /back"
             self.submissionMsg = "Thank you for your response! We'll get in touch with you as soon as possible. You can leave another message or send /back to dismiss to menu"
 
-    def __init__(self):
-        self.updateLocalization("English")
-
 class MyOrdersLocalization:
 
     # messages
@@ -196,8 +180,58 @@ class MyOrdersLocalization:
             self.noOrdersErr = "You don't have any orders yet! Go to the store 🛒 to browse the collection and place your first order"
             self.fetchErr = "Error when fetching orders. Please try again"
 
-    def __init__(self):
-        self.updateLocalization("English")
+class GeneralLocalization:
+
+    # types
+    orderStatusCompleted = str
+    orderStatusCancelled = str
+    orderStatusFailed = str
+
+    # service message strings
+    yourOrderFromServ = str
+    priceServ = str
+    statusServ = str
+
+    def updateLocalization(self, language):
+        if language == "Русский":
+
+            self.orderStatusCompleted = "Выполнен"
+            self.orderStatusCancelled = "Отменен"
+            self.orderStatusFailed = "Ошибка"
+
+            self.yourOrderFromServ = "Ваш заказ от"
+            self.priceServ = "Цена:"
+            self.statusServ = "Статус:"
+
+        elif language == "English":
+            
+            self.orderStatusCompleted = "Completed"
+            self.orderStatusCancelled = "Cancelled"
+            self.orderStatusFailed = "Error"
+
+            self.yourOrderFromServ = "Your order from"
+            self.priceServ = "Price:"
+            self.statusServ = "Status:"
+
+class ClothingTypes:
+
+    # types
+    shoes = str
+    sneakers = str
+    accessories = str
+
+    def updateLocalization(self, language):
+        if language == "Русский":
+
+            self.shoes = "Ботинки"
+            self.sneakers = "Кроссовки"
+            self.accessories = "Аксессуары"
+
+        elif language == "English":
+            
+            self.shoes = "Shoes"
+            self.sneakers = "Sneakers"
+            self.accessories = "Accessories"
 
 @Singleton
 class LocalizationManager:
@@ -210,6 +244,9 @@ class LocalizationManager:
     onboarding = OnboardingLocalization()
     customerSupport = CustomerSupportLocalization()
     myOrders = MyOrdersLocalization()
+    
+    general = GeneralLocalization()
+    clothingTypes = ClothingTypes()
 
     defaultErr = str
     sessionExpiredErr = str
@@ -224,18 +261,20 @@ class LocalizationManager:
         self.customerSupport.updateLocalization(language)
         self.myOrders.updateLocalization(language)
 
-        if language == "English":
+        self.general.updateLocalization(language)
+        self.clothingTypes.updateLocalization(language)
 
-            # err
-            self.defaultErr = "Unknown error. Please check your data"
-            self.sessionExpiredErr = "Your session has expired. Please try again"
+        if language == "Русский":
 
-        elif language == "Русский":
-            
             # err
             self.defaultErr = "Неизвестная ошибка. Проверьте введенные данные"
             self.sessionExpiredErr = "Ваша сессия закончилась. Пожалуйста попробуйте снова"
 
+        elif language == "English":
+            
+            # err
+            self.defaultErr = "Unknown error. Please check your data"
+            self.sessionExpiredErr = "Your session has expired. Please try again"
 
     def __init__(self):
-        self.updateLocalization("English")
+        self.updateLocalization("Русский")

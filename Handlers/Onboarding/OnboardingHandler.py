@@ -11,11 +11,8 @@ class OnboardingHandler(BaseHandler):
 
     def handleCommand(self, bot, message, flowManager):
         if message.text == "English" or message.text == "Русский":
-            # to do -- assign language
 
             LocalizationManager.instance().updateLocalization(message.text)
-
-            # print(LocalizationManager.instance().lang)
 
             markup = InterfaceManager.generateMainMenuLayout(flowManager)
 
