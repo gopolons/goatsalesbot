@@ -24,8 +24,8 @@ class ObjectMessageConvertionManager:
             statusStr = LocalizationManager.instance().general.statusServ
             
             messageContent = f"""{introStr} {timestamp} {itemsString}
-{priceStr} {totalCost}
-{statusStr} {status}            
+{priceStr}: {totalCost}
+{statusStr}: {status}            
             """
 
             bot.send_message(message.chat.id, messageContent)
