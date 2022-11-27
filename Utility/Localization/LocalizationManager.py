@@ -5,8 +5,8 @@ class MainMenuLocalization:
     menu = "⬅️"
     store = "🛒"
     customerSupport = "📞"
-    myOrders = "🗒️"
     help = "❓"
+    myOrders = "🗒️"
     onboarding = "🌎"
 
     # messages
@@ -18,8 +18,8 @@ class MainMenuLocalization:
             self.menuMsg = """Главное меню. Выберите опцию:
 🛒 - Перейти в магазин
 📞 - Служба поддержки
-🗒️ - Мои заказы
 ❓ - Помощь
+🗒️ - Мои заказы
 🌎 - Выбор языка
             """
         
@@ -28,8 +28,8 @@ class MainMenuLocalization:
             self.menuMsg = """Main menu. Pick an option:
 🛒 - Shop
 📞 - Customer support
-🗒️ - My orders
 ❓ - Help
+🗒️ - My orders
 🌎 - Select language
             """
 
@@ -38,9 +38,9 @@ class MainMenuLocalization:
 
 class StoreLocalization:
     # commands
-    search = "🔍"
     browse = "👀"
     checkout = "💸"
+    search = "🔍"
     menu = "⬅️"
 
     # messages
@@ -56,9 +56,9 @@ class StoreLocalization:
         if language == "Русский":
 
             self.menuMsg = """Магазин. Выберите опцию:
-🔍 - Поиск
 👀 - Смотреть новинки
 💸 - Оплата
+🔍 - Поиск
 ⬅️ - Главное меню
             """
             self.searchMsg = "Какую вещь вы ищете? Напишите название бренда, вещи, или категории (обувь, верхняя одежда итд), или напишите /back чтобы отменить"
@@ -71,9 +71,9 @@ class StoreLocalization:
         elif language == "English":
 
             self.menuMsg = """Store. Pick an option:
-🔍 - Search
 👀 - Browse collection
 💸 - Checkout
+🔍 - Search
 ⬅️ - Main menu
             """
             self.searchMsg = "What kind of item are you looking for? Write the name of the brand, item, or it's category (shoes, tops etc), or send /back to cancel"
@@ -103,9 +103,9 @@ class HelpLocalization:
         if language == "Русский":
 
             self.menuMsg = """Помощь. Выберите опцию:
-🌟 - О нас
 💲 - О магазине
 ©️ - Политика конфиденциальности
+🌟 - О нас
 ⬅️ - Главное меню
             """
             self.storeMsg = "Описание работы магазины"
@@ -115,9 +115,9 @@ class HelpLocalization:
         elif language == "English":
 
             self.menuMsg = """Help. Select an option:
-🌟 - About us
 💲 - About store
 ©️ - Privacy policy
+🌟 - About us
 ⬅️ - Main menu
             """
             self.storeMsg = "Description of how store works"
