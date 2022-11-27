@@ -46,6 +46,8 @@ class StoreLocalization:
     # messages
     menuMsg = str
     searchMsg = str
+    browseMsg = str
+    checkoutMsg = str
 
     # errors
     searchErr = str
@@ -60,7 +62,11 @@ class StoreLocalization:
 ⬅️ - Главное меню
             """
             self.searchMsg = "Какую вещь вы ищете? Напишите название бренда, вещи, или категории (обувь, верхняя одежда итд)"
+            self.browseMsg = "Здесь вы можете ознакомиться с коллекциями одежды доступной у нас на платформе"
+            self.checkoutMsg = "Здесь вы можете оформить заказ и перейти к оплате"
+
             self.searchErr = "К сожалению ничего нет по вашему запросу. Пожалуйста попробуйте другое, или напишите /back чтобы вернуться в меню магазина"
+            
         
         elif language == "English":
 
@@ -71,6 +77,9 @@ class StoreLocalization:
 ⬅️ - Main menu
             """
             self.searchMsg = "What kind of item are you looking for? Write the name of the brand, item, or it's category (shoes, tops etc)"
+            self.browseMsg = "Here you can browse our available collections"
+            self.checkoutMsg = "Here you can make an order and complete your payment"
+           
             self.searchErr = "Unfortunately, nothing was found based on your request. Please try another search term, or send /back to return to shop menu"
 
 
@@ -86,8 +95,12 @@ class HelpLocalization:
     tncpp = "©️"
     menu = "⬅️"
 
+    # messages
     menuMsg = str
-
+    storeMsg = str
+    TNCPPMsg = str
+    usMsg = str
+    
     def updateLocalization(self, language):
         if language == "Русский":
 
@@ -96,7 +109,11 @@ class HelpLocalization:
 💲 - О магазине
 ©️ - Политика конфиденциальности
 ⬅️ - Главное меню
-    """
+            """
+            self.storeMsg = "Описание работы магазины"
+            self.TNCPPMsg = "Политика пользования // Политика конфеденциальности"
+            self.usMsg = "О нас"
+            
         elif language == "English":
 
             self.menuMsg = """Help. Select an option:
@@ -104,7 +121,10 @@ class HelpLocalization:
 💲 - About store
 ©️ - Privacy policy
 ⬅️ - Main menu
-    """
+            """
+            self.storeMsg = "Description of how store works"
+            self.TNCPPMsg = "PP // TNC text"
+            self.usMsg = "About us"
 
     def __init__(self):
         self.updateLocalization("English")
