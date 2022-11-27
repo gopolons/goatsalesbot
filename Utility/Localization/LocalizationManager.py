@@ -124,6 +124,7 @@ class LocalizationManager:
     myOrders = MyOrdersLocalization()
 
     defaultErr = str
+    sessionExpiredErr = str
 
     def updateLocalization(self, language):
         self.lang = language
@@ -139,11 +140,13 @@ class LocalizationManager:
 
             # err
             self.defaultErr = "Unknown error. Please check your data"
+            self.sessionExpiredErr = "Your session has expired. Please try again"
 
         elif language == "Русский":
             
             # err
             self.defaultErr = "Неизвестная ошибка. Проверьте введенные данные"
+            self.sessionExpiredErr = "Ваша сессия закончилась. Пожалуйста попробуйте снова"
 
 
     def __init__(self):

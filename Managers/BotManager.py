@@ -23,7 +23,7 @@ class BotManager:
 
         @self.bot.message_handler(commands=["start"])
         def botStart(message):
-            
+
             self.logger.debug("**__Received a start command from "+ str(message.from_user.id) + "__**")
             self.flowManager.activeFlow = MainFlow.onboarding
         
@@ -60,8 +60,12 @@ class BotManager:
 
                 i = x.fetchHook()
 
-                msgcom = self.flowManager.activeFlow.hook()
-                
+                try:
+                    msgcom = self.flowManager.activeFlow.hook()
+                except: 
+                    self.resetToMenu(message)
+                    return
+
                 if i == msgcom:
                     x.handleCommand(self.bot, message, self.flowManager)
                     return
@@ -70,9 +74,24 @@ class BotManager:
             self.sendError(message)
             return
 
-            
+    def resetToMenu(self, message):
+        self.logger.debug("**__"+ str(message.from_user.id) + " user session was force reset__**")
+
+        self.bot.reply_to(message, LocalizationManager.instance().sessionExpiredErr)
+
+        self.flowManager.activeFlow = MainFlow.menu
+
+        msgcom = MainFlow.menu.value
+
+        for x in self.flowManager.handlers:
+            i = x.fetchHook()
+
+            if i == msgcom:
+                self.flowManager.activeFlow = x.flow
+                x.enableFlow(self.bot, message, self.flowManager)
+
     def sendError(self, message):
-        self.bot.reply_to(message, LocalizationManager.instance().defaultError)
+        self.bot.reply_to(message, LocalizationManager.instance().defaultErr)
 
     def run(self):
         self.bot.infinity_polling()
