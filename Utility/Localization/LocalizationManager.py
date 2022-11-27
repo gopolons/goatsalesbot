@@ -101,10 +101,23 @@ class HelpLocalization:
 🌟 - О нас
 ⬅️ - Главное меню
             """
-            self.storeMsg = "Описание работы магазины"
+            self.storeMsg = """О магазине
+Этот бот магазин призван помочь вам изучить и найти вещи которые сейчас находятся у нас на продаже и оформить заявку на заказ. 
+
+После того как вы отправите заявку, в течении 24ч с вами свяжется оператор. Он подтвердит наличие запрошенной вещи и примет у вас оплату.
+Срок доставки вещей 1-2 недели. 
+Если у вас есть любые вопросы насчет вашей доставки, пожалуйста обратитесь в поддержку 📞 и укажите ваш номер заказа, вам ответит первый доступный оператор
+            """
             self.TNCPPMsg = "Политика пользования // Политика конфеденциальности"
-            self.usMsg = "О нас"
-            
+            self.usMsg = """О нас
+Мы - команда GoatSales. 
+
+GoatSales это реселлер одежды с многолетним опытом импорта редких брендовых вещей со всего мира. 
+
+Мы занимаемся импортом вещей брендов покинувших российский рынок с 2015 года. 
+Мы всегда ставим в приоритет качество, нежели количество, из-за чего мы имеем небольшую но очень верную группу друзей, которая поддерживает нас, приобретая свою одежду у нас. 
+Если у вас есть какие либо вопросы, или вы хотите стать нашим партнером, оставьте свои данные через поддержку 📞
+            """
         elif language == "English":
 
             self.menuMsg = """Help. Select an option:
@@ -113,9 +126,21 @@ class HelpLocalization:
 🌟 - About us
 ⬅️ - Main menu
             """
-            self.storeMsg = "Description of how store works"
+            self.storeMsg = """About the store
+This bot store will help you to browse and search the things currently in store and leave set up an order.
+
+After you send the order request, within 24h you’ll be contacted by an operator. They will confirm the presence of a requested item and will accept a payment request from you.
+If you have any other questions about your order, please contact the support 📞 and provide your order number, the first available operator will respond to your query"""
             self.TNCPPMsg = "PP // TNC text"
-            self.usMsg = "About us"
+            self.usMsg = """About us
+We are the GoatSales team. 
+
+GoatSales is a clothes reseller with an almost a decade of experience in importing rare brand clothing items from around the world. 
+
+We have been importing clothing items of brands that left the Russian market since 2015. 
+We have always selected quality over quantity, and as a result we have a small but a very loyal group of friends who support us, buying clothes from us.
+If you have any questions, or you’d like to become a partner, leave your details through the support menu 📞 
+            """
 
 class OnboardingLocalization:
 
