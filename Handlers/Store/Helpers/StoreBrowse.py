@@ -1,4 +1,4 @@
-from Utility.Enums.StoreFlow import StoreFlow
+from Utility.Flows.StoreFlow import StoreFlow
 from ...Common.StoreBaseHandler import StoreBaseHandler
 from Utility.Localization.LocalizationManager import LocalizationManager
 

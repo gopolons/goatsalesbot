@@ -1,4 +1,4 @@
-from Utility.Enums.StoreFlow import StoreFlow
+from Utility.Flows.StoreFlow import StoreFlow
 from ...Common.StoreBaseHandler import StoreBaseHandler
 from Utility.Localization.LocalizationManager import LocalizationManager
 from Managers.InterfaceManager import InterfaceManager
@@ -12,6 +12,7 @@ class StoreSearch(StoreBaseHandler):
         return
 
     def handleCommand(self, bot, message, flowManager):
+        # here the search logic will take place
         searchItem = message.text 
         reply = LocalizationManager.instance().store.searchErr
         bot.reply_to(message, reply)

@@ -1,9 +1,9 @@
-from Utility.Enums.MainFlow import MainFlow
+from Utility.Flows.MainFlow import MainFlow
 from ..Common.BaseHandler import BaseHandler
 from Managers.InterfaceManager import InterfaceManager
 from Utility.Localization.LocalizationManager import LocalizationManager
 from Managers.FlowManagers.HelpFlowManager import HelpFlowManager
-from Utility.Enums.HelpFlow import HelpFlow
+from Utility.Flows.HelpFlow import HelpFlow
 
 class HelpHandler(BaseHandler):
 

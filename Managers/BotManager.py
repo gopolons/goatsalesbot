@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from Utility.Enums.MainFlow import MainFlow
+from Utility.Flows.MainFlow import MainFlow
 from .InterfaceManager import InterfaceManager
 from .FlowManagers.FlowManager import FlowManager
 from Utility.Localization.LocalizationManager import LocalizationManager

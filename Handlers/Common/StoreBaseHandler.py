@@ -1,4 +1,4 @@
-from Utility.Enums.StoreFlow import StoreFlow
+from Utility.Flows.StoreFlow import StoreFlow
 
 class StoreBaseHandler:
     def fetchHook(self) -> str:

@@ -1,4 +1,4 @@
-from Utility.Enums.HelpFlow import HelpFlow
+from Utility.Flows.HelpFlow import HelpFlow
 from ...Common.HelpBaseHandler import HelpBaseHandler
 from Utility.Localization.LocalizationManager import LocalizationManager
 

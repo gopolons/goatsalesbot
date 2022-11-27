@@ -87,8 +87,6 @@ class StoreLocalization:
         self.updateLocalization("English")
         
 class HelpLocalization:
-    lang = "Русский"
-
      # commands
     us = "🌟"
     store = "💲"
@@ -130,8 +128,9 @@ class HelpLocalization:
         self.updateLocalization("English")
 
 class OnboardingLocalization:
+
+    # messages
     botStartMsg = str
-    
     languageSelectedMsg = str
 
     def updateLocalization(self, language):
@@ -146,8 +145,6 @@ class OnboardingLocalization:
         self.updateLocalization("English")
 
 class CustomerSupportLocalization:
-    lang = "Русский"
-    
     def updateLocalization(self, language):
         return
 
@@ -155,10 +152,26 @@ class CustomerSupportLocalization:
         self.updateLocalization("English")
 
 class MyOrdersLocalization:
-    lang = "Русский"
+
+    # messages
+    menuMsg = str
+
+    # errors
+    noOrdersErr = str
+    fetchErr = str
 
     def updateLocalization(self, language):
-        return
+        if language == "Русский":
+            self.menuMsg = "История ваших заказов:"
+
+            self.noOrdersErr = "У вас еще нет заказов! Перейдите в магазин 🛒 чтобы ознакомиться с коллекцией и оформить ваш первый заказ"
+            self.fetchErr = "Ошибка при поиске заказов. Пожалуйста попробуйте снова"
+
+        elif language == "English":
+            self.menuMsg = "Your order history:"
+
+            self.noOrdersErr = "You don't have any orders yet! Go to the store 🛒 to browse the collection and place your first order"
+            self.fetchErr = "Error when fetching orders. Please try again"
 
     def __init__(self):
         self.updateLocalization("English")

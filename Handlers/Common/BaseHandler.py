@@ -1,4 +1,4 @@
-from Utility.Enums.MainFlow import MainFlow
+from Utility.Flows.MainFlow import MainFlow
 
 class BaseHandler:
     def fetchHook(self) -> str:

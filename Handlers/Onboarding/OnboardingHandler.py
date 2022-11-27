@@ -1,7 +1,7 @@
 from Handlers.Common.BaseHandler import BaseHandler
 from Managers.InterfaceManager import InterfaceManager
 from Utility.Localization.LocalizationManager import LocalizationManager
-from Utility.Enums.MainFlow import MainFlow
+from Utility.Flows.MainFlow import MainFlow
 
 class OnboardingHandler(BaseHandler):
 

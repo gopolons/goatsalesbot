@@ -1,4 +1,4 @@
-from Utility.Enums.HelpFlow import HelpFlow
+from Utility.Flows.HelpFlow import HelpFlow
 
 class HelpBaseHandler:
     def fetchHook(self) -> str:
