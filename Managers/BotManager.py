@@ -4,7 +4,7 @@ from Utility.Flows.MainFlow import MainFlow
 from .InterfaceManager import InterfaceManager
 from .FlowManagers.FlowManager import FlowManager
 from Utility.Localization.LocalizationManager import LocalizationManager
-from System.Logging import Logging
+from Log.Logging import Logging
 
 class BotManager:
     botToken = ""
