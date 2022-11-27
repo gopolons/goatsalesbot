@@ -1,5 +1,5 @@
 from Managers.SessionManager import SessionManager
-from System.Logging import Logging
+from Log.Logging import Logging
 
 logger = Logging.instance()
 logger.logger.debug("___GOSHANOTE___")
