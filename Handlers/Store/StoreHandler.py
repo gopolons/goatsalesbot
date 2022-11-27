@@ -16,14 +16,11 @@ class StoreHandler(BaseHandler):
         markup = InterfaceManager.generateStoreLayout(self.storeFlowManager)
         bot.reply_to(message, LocalizationManager.instance().store.menuMsg, reply_markup=markup)
 
-    def __init__(self):
-        self.flow = MainFlow.store
-
     def handleCommand(self, bot, message, flowManager):
         for x in self.storeFlowManager.handlers:
             if message.text == x.fetchHook():
-                self.storeFlowManager.activeFlow = x
-                self.storeFlowManager.activeFlow.enableFlow(bot, message, self.storeFlowManager)
+                self.storeFlowManager.activeFlow = x.storeFlow
+                x.enableFlow(bot, message, self.storeFlowManager)
                 return
 
             activeFlow = self.storeFlowManager.activeFlow.hook()
@@ -33,6 +30,5 @@ class StoreHandler(BaseHandler):
                     x.handleCommand(bot, message, self.storeFlowManager)
                     return
         
-    
-    def checkout(self, bot, message):
-        return
+    def __init__(self):
+        self.flow = MainFlow.store

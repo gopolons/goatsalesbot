@@ -1,6 +1,6 @@
-from Handlers.Store.StoreBrowse import StoreBrowse
-from Handlers.Store.StoreCheckout import StoreCheckout
-from Handlers.Store.StoreSearch import StoreSearch
+from Handlers.Store.Helpers.StoreBrowse import StoreBrowse
+from Handlers.Store.Helpers.StoreCheckout import StoreCheckout
+from Handlers.Store.Helpers.StoreSearch import StoreSearch
 from Utility.Enums.StoreFlow import StoreFlow
 
 class StoreFlowManager:

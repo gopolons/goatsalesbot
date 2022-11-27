@@ -1,6 +1,7 @@
 from telebot import types
 from Utility.Enums.MainFlow import MainFlow
 from Utility.Enums.StoreFlow import StoreFlow
+from Utility.Enums.HelpFlow import HelpFlow
 
 class InterfaceManager:
     def generateLanguageSelectionLayout() -> any:
@@ -29,6 +30,19 @@ class InterfaceManager:
                 item = types.KeyboardButton(i)
                 markup.add(item)
             
+        mainMenuButton = types.KeyboardButton(MainFlow.menu.hook())
+        markup.add(mainMenuButton)
+
+        return markup
+
+    def generateHelpLayout(helpFlowManager) -> any:
+        markup = types.ReplyKeyboardMarkup(row_width=2)
+        for x in helpFlowManager.handlers:
+            i = x.fetchHook() 
+            if HelpFlow.menu.hook() != i:
+                item = types.KeyboardButton(i)
+                markup.add(item)
+
         mainMenuButton = types.KeyboardButton(MainFlow.menu.hook())
         markup.add(mainMenuButton)
 

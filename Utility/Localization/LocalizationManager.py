@@ -79,9 +79,32 @@ class StoreLocalization:
         
 class HelpLocalization:
     lang = "Русский"
-    
+
+     # commands
+    us = "🌟"
+    store = "💲"
+    tncpp = "©️"
+    menu = "⬅️"
+
+    menuMsg = str
+
     def updateLocalization(self, language):
-        return
+        if language == "Русский":
+
+            self.menuMsg = """Помощь. Выберите опцию:
+🌟 - О нас
+💲 - О магазине
+©️ - Политика конфиденциальности
+⬅️ - Главное меню
+    """
+        elif language == "English":
+
+            self.menuMsg = """Help. Select an option:
+🌟 - About us
+💲 - About store
+©️ - Privacy policy
+⬅️ - Main menu
+    """
 
     def __init__(self):
         self.updateLocalization("English")
