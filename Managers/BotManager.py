@@ -1,7 +1,4 @@
-import aiogram
-from aiogram import Bot, Dispatcher, executor
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from aiogram import types
+from aiogram import executor
 from Utility.Flows.MainFlow import MainFlow
 from .InterfaceManager import InterfaceManager
 from .FlowManagers.FlowManager import FlowManager
@@ -9,10 +6,6 @@ from Utility.Localization.LocalizationManager import LocalizationManager
 from Log.Logging import Logging
 
 class BotManager:
-    botToken = ""
-
-    bot = any
-
     flowManager = FlowManager()
 
     def setup(self):
@@ -111,10 +104,9 @@ class BotManager:
     def run(self):
         executor.start_polling(self.dp, skip_updates=True)
 
-    def __init__(self, botToken):
-        self.botToken = botToken
-        self.bot = Bot(token=botToken) 
-        self.dp = Dispatcher(self.bot, storage = MemoryStorage())
+    def __init__(self, bot, dp):
+        self.bot = bot
+        self.dp = dp
         self.logger = Logging.instance().logger
         self.logger.debug("Bot initialised")
         self.setup()
