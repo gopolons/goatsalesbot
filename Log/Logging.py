@@ -10,7 +10,7 @@ class Logging:
     def __init__(self):
         self.logger = logging.getLogger('MAIN')
         self.logger.setLevel(logging.DEBUG)
-
+        
         self.ch = logging.StreamHandler()
         self.ch.setLevel(logging.DEBUG)
 
@@ -19,6 +19,9 @@ class Logging:
         self.ch.setFormatter(formatter)
 
         self.logger.addHandler(self.ch)
+
+        # Different messages that can be presented via the logger. The event is logged depending
+        # on the level of its importance and levels of StreamHandler & Logger itself
 
         # self.logger.debug('debug message')
         # self.logger.info('info message')
