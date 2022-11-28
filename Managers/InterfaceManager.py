@@ -1,4 +1,4 @@
-from telebot import types
+from aiogram import types
 from Utility.Flows.MainFlow import MainFlow
 from Utility.Flows.StoreFlow import StoreFlow
 from Utility.Flows.HelpFlow import HelpFlow

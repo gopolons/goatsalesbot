@@ -5,22 +5,22 @@ from Utility.Flows.MainFlow import MainFlow
 
 class OnboardingHandler(BaseHandler):
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         markup = InterfaceManager.generateLanguageSelectionLayout()
-        bot.reply_to(message, LocalizationManager.instance().onboarding.botStartMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().onboarding.botStartMsg, reply_markup=markup)
 
-    def handleCommand(self, bot, message, flowManager):
+    async def handleCommand(self, bot, message, flowManager):
         if message.text == "English" or message.text == "Русский":
 
             LocalizationManager.instance().updateLocalization(message.text)
 
             markup = InterfaceManager.generateMainMenuLayout(flowManager)
 
-            bot.reply_to(message, LocalizationManager.instance().onboarding.languageSelectedMsg)
+            await bot.send_message(message.from_user.id, LocalizationManager.instance().onboarding.languageSelectedMsg)
             flowManager.activeFlow = MainFlow.menu
             for x in flowManager.handlers:
                 if x.fetchHook() == flowManager.activeFlow.hook():
-                    x.enableFlow(bot, message, flowManager)
+                    await x.enableFlow(bot, message, flowManager)
                     return
 
             return

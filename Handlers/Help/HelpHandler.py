@@ -9,24 +9,24 @@ class HelpHandler(BaseHandler):
 
     helpFlowManager = HelpFlowManager()
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         self.helpFlowManager.activeFlow = HelpFlow.menu
         
         markup = InterfaceManager.generateStoreLayout(self.helpFlowManager)
-        bot.reply_to(message, LocalizationManager.instance().help.menuMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().help.menuMsg, reply_markup=markup)
 
-    def handleCommand(self, bot, message, flowManager):
+    async def handleCommand(self, bot, message, flowManager):
         for x in self.helpFlowManager.handlers:
             if message.text == x.fetchHook():
                 self.helpFlowManager.activeFlow = x.helpFlow
-                x.enableFlow(bot, message, self.helpFlowManager)
+                await x.enableFlow(bot, message, self.helpFlowManager)
                 return
 
             activeFlow = self.helpFlowManager.activeFlow.hook()
 
             for x in self.helpFlowManager.handlers:
                 if activeFlow == x.fetchHook():
-                    x.handleCommand(bot, message, self.helpFlowManager)
+                    await x.handleCommand(bot, message, self.helpFlowManager)
                     return
 
     def __init__(self):

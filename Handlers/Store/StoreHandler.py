@@ -1,4 +1,4 @@
-from telebot import types
+from aiogram import types
 from Utility.Flows.MainFlow import MainFlow
 from Utility.Flows.StoreFlow import StoreFlow
 from Utility.Localization.LocalizationManager import LocalizationManager
@@ -10,24 +10,24 @@ class StoreHandler(BaseHandler):
     
     storeFlowManager = StoreFlowManager()
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         self.storeFlowManager.activeFlow = StoreFlow.menu
         
         markup = InterfaceManager.generateStoreLayout(self.storeFlowManager)
-        bot.reply_to(message, LocalizationManager.instance().store.menuMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().store.menuMsg, reply_markup=markup)
 
-    def handleCommand(self, bot, message, flowManager):
+    async def handleCommand(self, bot, message, flowManager):
         for x in self.storeFlowManager.handlers:
             if message.text == x.fetchHook():
                 self.storeFlowManager.activeFlow = x.storeFlow
-                x.enableFlow(bot, message, self.storeFlowManager)
+                await x.enableFlow(bot, message, self.storeFlowManager)
                 return
 
             activeFlow = self.storeFlowManager.activeFlow.hook()
 
             for x in self.storeFlowManager.handlers:
                 if activeFlow == x.fetchHook():
-                    x.handleCommand(bot, message, self.storeFlowManager)
+                    await x.handleCommand(bot, message, self.storeFlowManager)
                     return
         
     def __init__(self):

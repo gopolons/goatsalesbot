@@ -5,17 +5,17 @@ from Managers.InterfaceManager import InterfaceManager
 
 class StoreSearch(StoreBaseHandler):
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         flowManager.activeFlow = StoreFlow.search
         markup = InterfaceManager.resetMarkup()
-        bot.reply_to(message, LocalizationManager.instance().store.searchMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().store.searchMsg, reply_markup=markup)
         return
 
-    def handleCommand(self, bot, message, flowManager):
+    async def handleCommand(self, bot, message, flowManager):
         # here the search logic will take place
         searchItem = message.text 
         reply = LocalizationManager.instance().store.searchErr
-        bot.reply_to(message, reply)
+        await bot.send_message(message.from_user.id, reply)
         return
 
     

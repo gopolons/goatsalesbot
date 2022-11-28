@@ -4,9 +4,9 @@ from Utility.Localization.LocalizationManager import LocalizationManager
 
 class StoreCheckout(StoreBaseHandler):
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         flowManager.activeFlow = StoreFlow.menu
-        bot.reply_to(message, LocalizationManager.instance().store.checkoutMsg)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().store.checkoutMsg)
         return
     
     def __init__(self):

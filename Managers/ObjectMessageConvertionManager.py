@@ -1,7 +1,7 @@
 from Utility.Localization.LocalizationManager import LocalizationManager
 
 class ObjectMessageConvertionManager:
-    def orderToStr(self, bot, message, orders):
+    async def orderToStr(self, bot, message, orders):
         for order in orders:
             id = order.id
             items = order.items
@@ -28,4 +28,4 @@ class ObjectMessageConvertionManager:
 {statusStr}: {status}            
             """
 
-            bot.send_message(message.chat.id, messageContent)
+            await bot.send_message(message.chat.id, messageContent)

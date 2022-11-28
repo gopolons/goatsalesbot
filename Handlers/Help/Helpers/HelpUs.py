@@ -4,9 +4,9 @@ from Utility.Localization.LocalizationManager import LocalizationManager
 
 class HelpUs(HelpBaseHandler):
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         flowManager.activeFlow = HelpFlow.menu
-        bot.reply_to(message, LocalizationManager.instance().help.usMsg)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().help.usMsg)
         return
 
     def __init__(self):

@@ -4,9 +4,9 @@ from Managers.InterfaceManager import InterfaceManager
 from Utility.Localization.LocalizationManager import LocalizationManager
 
 class MenuHandler(BaseHandler):
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         markup = InterfaceManager.generateMainMenuLayout(flowManager)
-        bot.reply_to(message, LocalizationManager.instance().mainMenu.menuMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().mainMenu.menuMsg, reply_markup=markup)
 
     def handleCommand(self, bot, message, flowManager):
         if message == "search":

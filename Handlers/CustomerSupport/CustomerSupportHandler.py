@@ -9,11 +9,11 @@ class CustomerSupportHandler(BaseHandler):
 
     customerSupportFlowManager = CustomerSupportFlowManager
 
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         self.customerSupportFlowManager.activeFlow = CustomerSupportFlow.menu
 
         markup = InterfaceManager.generateCustomerSupportLayout(self.customerSupportFlowManager)
-        bot.reply_to(message, LocalizationManager.instance().customerSupport.menuMsg, reply_markup=markup)
+        await bot.send_message(message.from_user.id, LocalizationManager.instance().customerSupport.menuMsg, reply_markup=markup)
 
     def handleCommand(self, bot, message, flowManager):
         for x in self.customerSupportFlowManager.handlers:

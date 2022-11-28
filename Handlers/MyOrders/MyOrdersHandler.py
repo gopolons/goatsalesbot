@@ -6,19 +6,20 @@ from Managers.ObjectMessageConvertionManager import ObjectMessageConvertionManag
 from Utility.Data.AppDataRepository import AppDataRepository
 
 class MyOrdersHandler(BaseHandler):
-    def enableFlow(self, bot, message, flowManager):
+    async def enableFlow(self, bot, message, flowManager):
         orders = self.fetchOrders(message.from_user.id)
         if orders == []:
-            bot.reply_to(message, LocalizationManager.instance().myOrders.noOrdersErr)
+            await bot.send_message(message.from_user.id, LocalizationManager.instance().myOrders.noOrdersErr)
         else:
-            bot.reply_to(message, LocalizationManager.instance().myOrders.menuMsg)
+            await bot.send_message(message.from_user.id, LocalizationManager.instance().myOrders.menuMsg)
             ObjectMessageConvertionManager().orderToStr(bot, message, orders)
         
     def fetchOrders(self, userID):
-        orders = self.dataRepo.fetchUserOrders(userID)
-        return orders
+        # research - TypeError: object list can't be used in 'await' expression
+        # orders = await self.dataRepo.fetchUserOrders(userID)
+        return []
 
-    def handleCommand(self, bot, message, flowManager):
+    async def handleCommand(self, bot, message, flowManager):
         if message == "search":
             self.search(bot, message)
 
